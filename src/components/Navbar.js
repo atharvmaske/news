@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 export default function Navbar() {
   return (
     <div>
@@ -21,7 +20,7 @@ export default function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">About</Link>
+                <Link className="nav-link active" aria-current="about" to="/about">About</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/news">News</Link>
@@ -32,7 +31,6 @@ export default function Navbar() {
             <button className="btn btn-outline-success me-3" type="submit" style={{ height: '30px', padding: '6px 12px', fontSize: '14px', marginTop: '-2px'}}>Search</button>
 
             </form>
-
           </div>
         </div>
       </nav>

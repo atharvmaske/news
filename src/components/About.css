@@ -1,41 +1,6 @@
-.about-container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-  }
-  
-  .about-hero {
-    background-color: #007bff;
-    color: #fff;
-    padding: 60px 0;
-    text-align: center;
-  }
-  
-  .about-hero h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-  }
-  
-  .about-hero p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-  }
-  
-  .about-details {
-    background-color: #f9f9f9;
-    padding: 40px;
-    border-radius: 10px;
-    margin-top: 20px;
-  }
-  
-  .about-details h2 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .about-details p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-  }
-  
+
+.social_media{
+  width: 40px;
+  margin-right: 30px;
+  border-radius: 30px;
+}

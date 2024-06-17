@@ -8,6 +8,7 @@ import About from './components/About';
 
 function App() {
   return (
+    <>
     <Router>
       <div className="app1">
         <Navbar />
@@ -15,10 +16,14 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/news" element={<News />} />
+          <Route path="/news" element={<News pagesize={6} />} />
+         
         </Routes>
       </div>
     </Router>
+    
+    </>
+    
   );
 }
 
