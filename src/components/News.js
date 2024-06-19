@@ -1,74 +1,50 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import Nitems from "./Nitems";
 import Spinner from "./Spinner";
 import PropTypes from "prop-types";
 
-class News extends Component {
-  static defaultProps = {
-    country: "in",
-    category: "general",
-    pageSize: 6,
-  };
+ const News = (props)=>  {
 
-  static propTypes = {
-    country: PropTypes.string,
-    category: PropTypes.string,
-    pageSize: PropTypes.number,
-  };
-  constructor(props) {
-    super(props);
-    this.state = {
-      articles: [],
-      page: 1,
-      pageSize: props.pageSize,
-      loading: true,
-    };
-    document.title = `${this.props.category}-News Buddy..`;
-  }
+  const [articles , setArticles]=useState([]);
+  const [page , setPage]=useState(1);
+  const [pageSize , setPagesize]=useState(6);
+  const [loading , setLoading]=useState(6);
+  document.title = `${props.category}-News Buddy..`;
+ useEffect(() => {
+    fetchNews();
+  }, [page, props.category]);
 
-  async componentDidMount() {
-    this.fetchNews();
-    
-  }
-  fetchNews = async () => {
+  const fetchNews = async () => {
     try {
-      
-      const { page, pageSize, loading } = this.state;
-      const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=3baf657765d9418a90de241fd08f1526&page=${page}&pageSize=${pageSize}`;
+      props.setProgress(10);
+      const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=3baf657765d9418a90de241fd08f1526&page=${page}&pageSize=${pageSize}`;
+      props.setProgress(30);
       const response = await fetch(url);
+      props.setProgress(70);
       const data = await response.json();
-      this.setState({ articles: data.articles, loading: false });
+      props.setProgress(90);
+      setArticles(data.articles);
+      setLoading(false);
+      props.setProgress(100);
     } catch (error) {
       console.error("Error fetching news articles", error);
     }
   };
-  prev = async () => {
-    this.setState({ loading: true });
-    this.setState(
-      (prevState) => ({
-        page: prevState.page - 1,
-      }),
-      this.fetchNews
-    );
+  const prev = async () => {
+    setLoading(true);
+    setPage(page - 1);
   };
-  next = async () => {
-    this.setState({ loading: true });
-    this.setState(
-      (prevState) => ({
-        page: prevState.page + 1,
-      }),
-      this.fetchNews
-    );
+  const next = async () => {
+    setLoading(true);
+    setPage(page + 1);
   };
 
-  render() {
-    const { articles, loading, page } = this.state;
     const defaultDescription =
       "Welcome to the live updates platform for Hindustan Times. Follow all the major news update...";
 
     return (
       <>
-        <div style={{ textAlign: "center", marginTop: "29px" }}>
+        <div style={{ textAlign: "center", marginTop: "79px" }}>
           <div
             className="head"
             style={{
@@ -80,7 +56,7 @@ class News extends Component {
               marginBottom: "39px",
             }}
           >
-            <h1>News Buddy...{this.props.category}</h1>
+            <h1 style={{cursor: 'pointer'}} >News Buddy...{props.category}</h1>
             <p>Get The Latest News Around The World In One Click</p>
           </div>
           {loading && <Spinner />}
@@ -119,19 +95,30 @@ class News extends Component {
           <div className="d-flex justify-content-around" style={{marginBottom:'29px'}}>
             <button
               disabled={page <= 1}
-              onClick={this.prev}
+              onClick={prev}
               className="btn btn-primary"
             >
               &larr; Previous
             </button>
-            <button onClick={this.next} className="btn btn-primary" >
+            <button onClick={next} className="btn btn-primary" >
               Next &rarr;
             </button>
           </div>
         </div>
       </>
     );
-  }
-}
+  };
 
+
+// News.defaultProps = {
+//   country: "in",
+//   category: "general",
+//   pageSize: 6,
+// };
+
+News.propTypes = {
+  country: PropTypes.string,
+  category: PropTypes.string,
+  pageSize: PropTypes.number,
+};
 export default News;

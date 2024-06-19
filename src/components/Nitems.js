@@ -1,12 +1,11 @@
-import React, { Component } from "react";
+import React, {  Component } from "react";
 import "./Nitems.css";
+import PropTypes from 'prop-types'
 
-class Nitems extends Component {
-  render() {
-    const { title, description, urlToImage, newsUrl, author, date, source } =
-      this.props;
+
+const Nitems =(props) =>  {
+    const { title, description, urlToImage, newsUrl, author, date, source } = props;
     const newdate = new Date(date).toLocaleTimeString();
-
     return (
       <div
         className="container"
@@ -58,7 +57,7 @@ class Nitems extends Component {
         </div>
       </div>
     );
-  }
+
 }
 
 export default Nitems;

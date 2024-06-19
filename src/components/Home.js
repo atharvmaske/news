@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Home.css";
 
 const Home = () => {
   return (
-    <div className="home-container">
+    <div className="home-container" style={{marginTop:'59px'}}>
       <section className="hero">
         <div className="hero-content">
           <h1>Welcome to News Buddy!</h1>

@@ -7,7 +7,8 @@ import "./About.css";
 const About = () => {
   return (
     <>
-      <div style={{ textAlign: "center", marginTop: "50px", height: "39rem" }}>
+    
+      <div style={{ textAlign: "center", marginTop: "93px", height: "39rem" }}>
         <img
           src={atharvPhoto}
           alt="Atharv Maske"

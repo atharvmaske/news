@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-export default function Navbar() {
+const   Navbar = () => {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar fixed-top navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/Home">
             News Buddy
@@ -96,9 +96,10 @@ export default function Navbar() {
                 Search
               </button>
             </form>
-          </div>
+          </div>  
         </div>
       </nav>
     </div>
   );
 }
+export default Navbar;
